@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Text,
     View,
@@ -11,13 +11,11 @@ import {
     FlatList,
 } from 'react-native';
 import { COLORS, SPACING } from '../theme/Theme'
-import {
-    upComingMovies,
-    nowPlayingMovies,
-    popularMovies,
-    baseImagePath,
-} from '../api/ApiCalls';
 import InputHeader from '../components/InputHeader';
+import { getNowPlayingMoviesList, getUpcomingMoviesList, getPopularMoviesList } from '../components/MoviesFunction';
+import CategoryHeader from '../components/CategoryHeader';
+import SubMovieCard from '../components/SubMovieCard';
+import { baseImagePath } from '../api/ApiCalls';
 
 const { width, height } = Dimensions.get('window');
 
@@ -27,6 +25,20 @@ const HomeScreen = ({ navigation }: any) => {
     const [nowPlayingMoviesList, setNowPlayingMoviesList] = useState<any>(undefined)
     const [popularMoviesList, setPopularMoviesList] = useState<any>(undefined)
     const [upComingMoviesList, setUpComingMoviesList] = useState<any>(undefined)
+
+    useEffect(() => {
+        (async () => {
+            let tempNowPlaying = await getNowPlayingMoviesList();
+            setNowPlayingMoviesList(tempNowPlaying.results);
+
+            let tempPopular = await getPopularMoviesList();
+            setPopularMoviesList(tempPopular.results);
+
+            let tempUpComing = await getUpcomingMoviesList();
+            setUpComingMoviesList(tempUpComing.results);
+        })();
+    }, []);
+
 
     // Search
     const searchMoviesFunction = () => {
@@ -46,6 +58,7 @@ const HomeScreen = ({ navigation }: any) => {
                 style={styles.container}>
                 <StatusBar hidden />
 
+                {/* Search Input */}
                 <View style={styles.InputHeaderContainer}>
                     <InputHeader searchFunction={searchMoviesFunction} />
                 </View>
@@ -60,10 +73,85 @@ const HomeScreen = ({ navigation }: any) => {
 
 
 
-    return (
-        <View>
 
-        </View>
+
+    return (
+        <ScrollView
+            bounces={false}
+            style={styles.container}>
+            <StatusBar hidden />
+
+            {/* Search Input */}
+            <View style={styles.InputHeaderContainer}>
+                <InputHeader searchFunction={searchMoviesFunction} />
+            </View>
+
+            {/* Now Playing */}
+            <CategoryHeader title={'Now Playing'} />
+            <FlatList
+                data={nowPlayingMoviesList}
+                keyExtractor={(item: any) => item.id}
+                contentContainerStyle={styles.containerGap36}
+                horizontal
+                renderItem={({ item, index }) => (
+                    <SubMovieCard
+                        shouldlMarginatedAtEnd={true}
+                        title={item.original_title}
+                        imagePath={baseImagePath('w342', item.poster_path)}
+                        cardFunction={() => {
+                            navigation.navigate('Details', { movieId: item.id })
+                        }}
+                        cardWidth={width / 3}
+                        isFirst={index == 0 ? true : false}
+                        isLast={index == upComingMoviesList?.length - 1 ? true : false}
+                    />
+                )}
+            />
+
+            {/* Popular */}
+            <CategoryHeader title={'Popular'} />
+            <FlatList
+                data={popularMoviesList}
+                keyExtractor={(item: any) => item.id}
+                contentContainerStyle={styles.containerGap36}
+                horizontal
+                renderItem={({ item, index }) => (
+                    <SubMovieCard
+                        shouldlMarginatedAtEnd={true}
+                        title={item.original_title}
+                        imagePath={baseImagePath('w342', item.poster_path)}
+                        cardFunction={() => {
+                            navigation.navigate('Details', { movieId: item.id })
+                        }}
+                        cardWidth={width / 3}
+                        isFirst={index == 0 ? true : false}
+                        isLast={index == upComingMoviesList?.length - 1 ? true : false}
+                    />
+                )}
+            />
+
+            {/* Upcoming */}
+            <CategoryHeader title={'Upcoming'} />
+            <FlatList
+                data={upComingMoviesList}
+                keyExtractor={(item: any) => item.id}
+                contentContainerStyle={styles.containerGap36}
+                horizontal
+                renderItem={({ item, index }) => (
+                    <SubMovieCard
+                        shouldlMarginatedAtEnd={true}
+                        title={item.original_title}
+                        imagePath={baseImagePath('w342', item.poster_path)}
+                        cardFunction={() => {
+                            navigation.navigate('Details', { movieId: item.id })
+                        }}
+                        cardWidth={width / 3}
+                        isFirst={index == 0 ? true : false}
+                        isLast={index == upComingMoviesList?.length - 1 ? true : false}
+                    />
+                )}
+            />
+        </ScrollView>
     );
 };
 
