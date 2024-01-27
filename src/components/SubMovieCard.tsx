@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     textTitle: {
         // fontFamily: FONTFAMILY.poppins_regular,
-        fontSize: FONTSIZE.size_14,
+        fontSize: FONTSIZE.size_16,
         color: COLORS.White,
         textAlign: 'center',
         paddingVertical: SPACING.space_10,

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     text: {
         // fontFamily: FONTFAMILY.poppins_semibold,
         fontSize: FONTSIZE.size_20,
-        color: COLORS.White,
+        color: COLORS.Primary,
         paddingHorizontal: SPACING.space_36,
         paddingVertical: SPACING.space_28,
     },

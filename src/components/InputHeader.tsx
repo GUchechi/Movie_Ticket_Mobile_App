@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
     textInput: {
         width: '90%',
-        fontFamily: FONTFAMILY.poppins_regular,
+        // fontFamily: FONTFAMILY.poppins_regular,
         fontSize: FONTSIZE.size_18,
         color: COLORS.White,
     },

@@ -16,6 +16,7 @@ import { getNowPlayingMoviesList, getUpcomingMoviesList, getPopularMoviesList } 
 import CategoryHeader from '../components/CategoryHeader';
 import SubMovieCard from '../components/SubMovieCard';
 import { baseImagePath } from '../api/ApiCalls';
+import MovieCard from '../components/MovieCard';
 
 const { width, height } = Dimensions.get('window');
 
@@ -94,16 +95,19 @@ const HomeScreen = ({ navigation }: any) => {
                 contentContainerStyle={styles.containerGap36}
                 horizontal
                 renderItem={({ item, index }) => (
-                    <SubMovieCard
+                    <MovieCard
                         shouldlMarginatedAtEnd={true}
                         title={item.original_title}
-                        imagePath={baseImagePath('w342', item.poster_path)}
+                        imagePath={baseImagePath('w780', item.poster_path)}
                         cardFunction={() => {
                             navigation.navigate('Details', { movieId: item.id })
                         }}
-                        cardWidth={width / 3}
+                        cardWidth={width * 0.7}
                         isFirst={index == 0 ? true : false}
                         isLast={index == upComingMoviesList?.length - 1 ? true : false}
+                        genre={item.genre_ids.slice(1, 4)}
+                        vote_average={item.vote_average}
+                        vote_count={item.vote_count}
                     />
                 )}
             />
