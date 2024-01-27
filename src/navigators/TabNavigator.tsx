@@ -39,7 +39,7 @@ const TabNavigator = () => {
             />
 
             {/* SearchScreen */}
-            <Tab.Screen name="SearchScreen" component={SearchScreen}
+            <Tab.Screen name="Search" component={SearchScreen}
                 options={{
                     tabBarShowLabel: false,
                     tabBarIcon: ({ focused, color, size }) =>
@@ -52,7 +52,7 @@ const TabNavigator = () => {
             />
 
             {/* TicketScreen */}
-            <Tab.Screen name="TicketScreen" component={TicketScreen}
+            <Tab.Screen name="Ticket" component={TicketScreen}
                 options={{
                     tabBarShowLabel: false,
                     tabBarIcon: ({ focused, color, size }) =>
@@ -65,7 +65,7 @@ const TabNavigator = () => {
             />
 
             {/* UserAccountScreen */}
-            <Tab.Screen name="UserAccountScreen" component={UserAccountScreen}
+            <Tab.Screen name="UserAccount" component={UserAccountScreen}
                 options={{
                     tabBarShowLabel: false,
                     tabBarIcon: ({ focused, color, size }) =>
