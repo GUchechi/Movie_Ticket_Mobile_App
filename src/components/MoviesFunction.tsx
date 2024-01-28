@@ -1,3 +1,4 @@
+import Toast from 'react-native-root-toast'
 import {
     upComingMovies,
     nowPlayingMovies,
@@ -12,7 +13,14 @@ export const getNowPlayingMoviesList = async () => {
         let json = await response.json();
         return json;
     } catch (error) {
-        console.error('Something went wrong', error);
+        let toast = Toast.show('Request failed to send.', {
+            duration: Toast.durations.LONG,
+             position: Toast.positions.CENTER,
+        });
+
+        setTimeout(function hideToast() {
+            Toast.hide(toast);
+        }, 2000);
     }
 }
 
@@ -23,10 +31,14 @@ export const getUpcomingMoviesList = async () => {
         let json = await response.json();
         return json;
     } catch (error) {
-        console.error(
-            ' Something went wrong in getUpcomingMoviesList Function',
-            error,
-        );
+        let toast = Toast.show('Request failed to send.', {
+            duration: Toast.durations.LONG,
+             position: Toast.positions.CENTER,
+        });
+
+        setTimeout(function hideToast() {
+            Toast.hide(toast);
+        }, 2000);
     }
 };
 
@@ -37,9 +49,13 @@ export const getPopularMoviesList = async () => {
         let json = await response.json();
         return json;
     } catch (error) {
-        console.error(
-            ' Something went wrong in getPopularMoviesList Function',
-            error,
-        );
+        let toast = Toast.show('Request failed to send.', {
+            duration: Toast.durations.LONG,
+             position: Toast.positions.CENTER,
+        });
+
+        setTimeout(function hideToast() {
+            Toast.hide(toast);
+        }, 2000);
     }
 };

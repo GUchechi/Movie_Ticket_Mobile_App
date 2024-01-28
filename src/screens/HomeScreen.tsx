@@ -115,7 +115,7 @@ const HomeScreen = ({ navigation }: any) => {
                         <MovieCard
                             shouldlMarginatedAtEnd={true}
                             cardFunction={() => {
-                                navigation.push('MovieDetails', { movieid: item.id });
+                                navigation.push('Details', { movieid: item.id });
                             }}
                             cardWidth={width * 0.7}
                             isFirst={index == 0 ? true : false}
