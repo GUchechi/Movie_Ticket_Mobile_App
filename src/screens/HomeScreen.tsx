@@ -10,13 +10,15 @@ import {
     StatusBar,
     FlatList,
 } from 'react-native';
-import { COLORS, SPACING } from '../theme/Theme'
+import { COLORS, FONTSIZE, SPACING } from '../theme/Theme'
 import InputHeader from '../components/InputHeader';
 import { getNowPlayingMoviesList, getUpcomingMoviesList, getPopularMoviesList } from '../components/MoviesFunction';
 import CategoryHeader from '../components/CategoryHeader';
 import SubMovieCard from '../components/SubMovieCard';
 import { baseImagePath } from '../api/ApiCalls';
 import MovieCard from '../components/MovieCard';
+import { Feather } from '@expo/vector-icons';
+import GodswillStream from '../components/GodswillStream';
 
 const { width, height } = Dimensions.get('window');
 
@@ -50,6 +52,7 @@ const HomeScreen = ({ navigation }: any) => {
         navigation.navigate('Search');
     };
 
+    // Activity Indicator
     if (nowPlayingMoviesList == undefined &&
         nowPlayingMoviesList == null &&
         popularMoviesList == undefined &&
@@ -86,10 +89,8 @@ const HomeScreen = ({ navigation }: any) => {
             style={styles.container}>
             <StatusBar hidden />
 
-            {/* Search Input */}
-            <View style={styles.InputHeaderContainer}>
-                <InputHeader searchFunction={searchMoviesFunction} />
-            </View>
+            {/* Header */}
+            <GodswillStream searchMoviesFunction={searchMoviesFunction} />
 
             {/* Now Playing */}
             <CategoryHeader title={'Now Playing'} />
@@ -196,10 +197,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     InputHeaderContainer: {
-        marginHorizontal: SPACING.space_36,
+        marginHorizontal: SPACING.space_24,
         marginTop: SPACING.space_28,
+        display: 'flex',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: 'center',
+    },
+    GodswillStream: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: 'center',
+        gap: 5,
+    },
+    GodswillStreamBG: {
+        backgroundColor: COLORS.Primary,
+        padding: 11,
+        borderTopRightRadius: 50,
+        borderBottomRightRadius: 50,
+    },
+    searchIcon: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: SPACING.space_10,
     },
     containerGap36: {
         gap: SPACING.space_36,
     },
+
 });
