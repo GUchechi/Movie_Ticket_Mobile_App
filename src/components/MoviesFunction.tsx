@@ -3,6 +3,8 @@ import {
     upComingMovies,
     nowPlayingMovies,
     popularMovies,
+    movieDetails,
+    movieCastDetails,
 } from '../api/ApiCalls';
 
 
@@ -15,7 +17,7 @@ export const getNowPlayingMoviesList = async () => {
     } catch (error) {
         let toast = Toast.show('Request failed to send.', {
             duration: Toast.durations.LONG,
-             position: Toast.positions.CENTER,
+            position: Toast.positions.CENTER,
         });
 
         setTimeout(function hideToast() {
@@ -33,7 +35,7 @@ export const getUpcomingMoviesList = async () => {
     } catch (error) {
         let toast = Toast.show('Request failed to send.', {
             duration: Toast.durations.LONG,
-             position: Toast.positions.CENTER,
+            position: Toast.positions.CENTER,
         });
 
         setTimeout(function hideToast() {
@@ -51,7 +53,7 @@ export const getPopularMoviesList = async () => {
     } catch (error) {
         let toast = Toast.show('Request failed to send.', {
             duration: Toast.durations.LONG,
-             position: Toast.positions.CENTER,
+            position: Toast.positions.CENTER,
         });
 
         setTimeout(function hideToast() {
@@ -59,3 +61,26 @@ export const getPopularMoviesList = async () => {
         }, 2000);
     }
 };
+
+// Get Movie Details
+export const getMovieDetails = async (movieid: number) => {
+    try {
+        let response = await fetch(movieDetails(movieid));
+        let json = await response.json();
+        return json;
+    } catch (error) {
+        console.error('Something Went wrong in getMoviesDetails Function', error);
+    }
+}
+
+// Get Movie Cast Details
+export const getMovieCastDetails = async (movieid: number) => {
+    try {
+        let response = await fetch(movieCastDetails(movieid));
+        let json = await response.json();
+        return json;
+    } catch (error) {
+        console.error('Something Went wrong in getMovieCastDetails Function',
+            error,)
+    }
+}

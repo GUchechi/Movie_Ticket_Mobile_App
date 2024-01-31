@@ -136,7 +136,8 @@ const HomeScreen = ({ navigation }: any) => {
             <FlatList
                 data={popularMoviesList}
                 keyExtractor={(item: any) => item.id}
-                bounces={false}
+                bounces={false}    
+                showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.containerGap36}
                 horizontal
                 renderItem={({ item, index }) => (
@@ -145,7 +146,7 @@ const HomeScreen = ({ navigation }: any) => {
                         title={item.original_title}
                         imagePath={baseImagePath('w342', item.poster_path)}
                         cardFunction={() => {
-                            navigation.navigate('Details', { movieId: item.id })
+                            navigation.navigate('Details', { movieid: item.id })
                         }}
                         cardWidth={width / 3}
                         isFirst={index == 0 ? true : false}
@@ -158,7 +159,8 @@ const HomeScreen = ({ navigation }: any) => {
             <CategoryHeader title={'Upcoming'} />
             <FlatList
                 data={upComingMoviesList}
-                keyExtractor={(item: any) => item.id}
+                keyExtractor={(item: any) => item.id}               
+                showsHorizontalScrollIndicator={false}
                 bounces={false}
                 contentContainerStyle={styles.containerGap36}
                 horizontal
@@ -168,7 +170,7 @@ const HomeScreen = ({ navigation }: any) => {
                         title={item.original_title}
                         imagePath={baseImagePath('w342', item.poster_path)}
                         cardFunction={() => {
-                            navigation.navigate('Details', { movieId: item.id })
+                            navigation.navigate('Details', { movieid: item.id })
                         }}
                         cardWidth={width / 3}
                         isFirst={index == 0 ? true : false}
