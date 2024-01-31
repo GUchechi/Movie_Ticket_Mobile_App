@@ -36,7 +36,7 @@ const genres: any = {
     53: 'Thriller',
     10752: 'War',
     37: 'Western',
-};
+}; 
 
 const MovieCard: React.FC<MovieCardProps> = ({ title, imagePath, shouldlMarginatedAtEnd, cardFunction, cardWidth, isFirst, isLast, vote_average, vote_count, genre }) => {
     return (

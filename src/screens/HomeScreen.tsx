@@ -23,7 +23,6 @@ import GodswillStream from '../components/GodswillStream';
 const { width, height } = Dimensions.get('window');
 
 
-
 const HomeScreen = ({ navigation }: any) => {
     const [nowPlayingMoviesList, setNowPlayingMoviesList] = useState<any>(undefined)
     const [popularMoviesList, setPopularMoviesList] = useState<any>(undefined)
@@ -136,7 +135,7 @@ const HomeScreen = ({ navigation }: any) => {
             <FlatList
                 data={popularMoviesList}
                 keyExtractor={(item: any) => item.id}
-                bounces={false}    
+                bounces={false}
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.containerGap36}
                 horizontal
@@ -159,7 +158,7 @@ const HomeScreen = ({ navigation }: any) => {
             <CategoryHeader title={'Upcoming'} />
             <FlatList
                 data={upComingMoviesList}
-                keyExtractor={(item: any) => item.id}               
+                keyExtractor={(item: any) => item.id}
                 showsHorizontalScrollIndicator={false}
                 bounces={false}
                 contentContainerStyle={styles.containerGap36}
