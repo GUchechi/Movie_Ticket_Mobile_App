@@ -156,6 +156,20 @@ const MovieDetailsScreen = ({ navigation, route }: any) => {
           )}
         />
 
+        {/* Button */}
+        <View>
+          <TouchableOpacity
+            style={styles.buttonBG}
+            onPress={() => {
+              navigation.push('SeatBooking', {
+                BgImage: baseImagePath('w780', movieData.backdrop_path),
+                PosterImage: baseImagePath('original', movieData.poster_path),
+              });
+            }}>
+            <Text style={styles.buttonText}>Select Seats</Text>
+          </TouchableOpacity>
+        </View>
+
 
       </View>
 
@@ -267,6 +281,19 @@ const styles = StyleSheet.create({
   },
   containerGap24: {
     gap: SPACING.space_24,
+  },
+  buttonBG: {
+    alignItems: 'center',
+    marginVertical: SPACING.space_24,
+  },
+  buttonText: {
+    borderRadius: BORDERRADIUS.radius_25 * 2,
+    paddingHorizontal: SPACING.space_24,
+    paddingVertical: SPACING.space_10,
+    backgroundColor: COLORS.Primary,
+    fontSize: FONTSIZE.size_18,
+    color: COLORS.Grey,
+    fontWeight: "bold",
   },
 });
 

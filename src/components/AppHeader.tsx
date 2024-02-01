@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     iconStyle: {
-        color: COLORS.White,
+        color: COLORS.Grey,
         fontSize: FONTSIZE.size_24,
     },
     headerText: {
