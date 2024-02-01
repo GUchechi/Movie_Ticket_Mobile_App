@@ -3,34 +3,35 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 import {
     BORDERRADIUS,
     COLORS,
-    FONTFAMILY,
     FONTSIZE,
     SPACING,
 } from '../theme/Theme';
 
-const CastCard = (props: any) => {
+
+
+const CastCard = ({ shouldMarginatedAtEnd, cardWidth, isFirst, isLast, imagePath, title, subtitle }: any) => {
     return (
         <View
             style={[
                 styles.container,
-                props.shouldMarginatedAtEnd
-                    ? props.isFirst
+                shouldMarginatedAtEnd
+                    ? isFirst
                         ? { marginLeft: SPACING.space_24 }
-                        : props.isLast
+                        : isLast
                             ? { marginRight: SPACING.space_24 }
                             : {}
                     : {},
-                { maxWidth: props.cardWidth },
+                { maxWidth: cardWidth },
             ]}>
             <Image
-                source={{ uri: props.imagePath }}
-                style={[styles.cardImage, { width: props.cardWidth }]}
+                source={{ uri: imagePath }}
+                style={[styles.cardImage, { width: cardWidth }]}
             />
             <Text style={styles.title} numberOfLines={1}>
-                {props.title}
+                {title}
             </Text>
             <Text style={styles.subtitle} numberOfLines={1}>
-                {props.subtitle}
+                {subtitle}
             </Text>
         </View>
     );
@@ -39,22 +40,25 @@ const CastCard = (props: any) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        marginBottom: 20,
     },
     cardImage: {
-        aspectRatio: 1920 / 2880,
+        aspectRatio: 1920 / 2000,
         borderRadius: BORDERRADIUS.radius_25 * 4,
     },
     title: {
-        alignSelf: 'stretch',
-        fontFamily: FONTFAMILY.poppins_medium,
+        alignSelf: 'center',
+        // fontFamily: FONTFAMILY.poppins_medium,
         fontSize: FONTSIZE.size_12,
+        fontWeight: 'bold',
         color: COLORS.White,
+        marginTop: 5,
     },
     subtitle: {
-        alignSelf: 'stretch',
-        fontFamily: FONTFAMILY.poppins_medium,
+        alignSelf: 'center',
+        // fontFamily: FONTFAMILY.poppins_medium,
         fontSize: FONTSIZE.size_10,
-        color: COLORS.White,
+        color: COLORS.Primary,
     },
 });
 

@@ -13,10 +13,11 @@ const CategoryHeader: React.FC<CategoryHeaderProp> = ({ title }) => {
 const styles = StyleSheet.create({
     text: {
         // fontFamily: FONTFAMILY.poppins_semibold,
-        fontSize: FONTSIZE.size_20,
+        fontSize: FONTSIZE.size_24,
         color: COLORS.Primary,
         paddingHorizontal: SPACING.space_36,
-        paddingVertical: SPACING.space_28,
+        paddingVertical: SPACING.space_24,
+        fontWeight: "bold",
     },
 });
 

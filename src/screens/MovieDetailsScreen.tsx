@@ -24,6 +24,7 @@ import { getMovieCastDetails, getMovieDetails } from '../components/MoviesFuncti
 import AppHeader from '../components/AppHeader';
 import { AntDesign } from '@expo/vector-icons';
 import CategoryHeader from '../components/CategoryHeader';
+import CastCard from '../components/CastCard';
 
 
 
@@ -40,7 +41,7 @@ const MovieDetailsScreen = ({ navigation, route }: any) => {
 
     (async () => {
       const tempMovieCastData = await getMovieCastDetails(route.params.movieid);
-      setmovieCastData(tempMovieCastData);
+      setmovieCastData(tempMovieCastData.cast);
     })();
   }, []);
 
@@ -73,7 +74,7 @@ const MovieDetailsScreen = ({ navigation, route }: any) => {
   return (
     <ScrollView
       style={styles.container}
-      contentContainerStyle={styles.scrollViewContainer}
+      // contentContainerStyle={styles.scrollViewContainer}
       bounces={false}
       showsVerticalScrollIndicator={false}>
       <StatusBar hidden />
@@ -133,8 +134,29 @@ const MovieDetailsScreen = ({ navigation, route }: any) => {
         <Text style={styles.descriptionText}>{movieData?.overview}</Text>
       </View>
 
+      {/* Movie Cast */}
       <View>
-        <CategoryHeader title='Top Cast'/>
+        <CategoryHeader title='Top Cast' />
+
+        <FlatList
+          data={movieCastData}
+          keyExtractor={(item: any) => item.id}
+          horizontal
+          contentContainerStyle={styles.containerGap24}
+          renderItem={({ item, index }) => (
+            <CastCard
+              shouldMarginatedAtEnd={true}
+              cardWidth={80}
+              isFirst={index == 0 ? true : false}
+              isLast={index == movieCastData?.length - 1 ? true : false}
+              imagePath={baseImagePath('w185', item.profile_path)}
+              title={item.original_name}
+              subtitle={item.character}
+            />
+          )}
+        />
+
+
       </View>
 
     </ScrollView>
@@ -238,10 +260,13 @@ const styles = StyleSheet.create({
     color: COLORS.Primary,
   },
   descriptionText: {
-    fontFamily: FONTFAMILY.poppins_light,
+    // fontFamily: FONTFAMILY.poppins_light,
     fontSize: FONTSIZE.size_14,
     color: COLORS.White,
     marginTop: 10,
+  },
+  containerGap24: {
+    gap: SPACING.space_24,
   },
 });
 
