@@ -61,7 +61,7 @@ const TicketScreen = ({ route, navigation }: any) => {
             source={{ uri: ticketData?.ticketImage }}
             style={styles.ticketBGImage}>
             <LinearGradient
-              colors={[COLORS.OrangeRGBA0, COLORS.Primary]}
+              colors={[COLORS.OrangeRGBA0, COLORS.Grey]}
               style={styles.linearGradient}>
               <View
                 style={[
@@ -165,11 +165,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 3,
     width: 300,
     alignSelf: 'center',
-    backgroundColor: COLORS.Primary,
+    backgroundColor: COLORS.Grey,
     borderStyle: 'dashed',
   },
   ticketFooter: {
-    backgroundColor: COLORS.Primary,
+    backgroundColor: COLORS.Grey,
     width: 300,
     alignItems: 'center',
     paddingBottom: SPACING.space_36,
