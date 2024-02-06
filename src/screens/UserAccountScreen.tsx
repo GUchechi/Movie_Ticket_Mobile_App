@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image } from 'react-native';
 import { COLORS, FONTSIZE, SPACING } from '../theme/Theme';
 import { StatusBar } from 'expo-status-bar';
 import AppHeader from '../components/AppHeader';
+import SettingComponent from '../components/SettingComponent';
 
 
 const UserAccountScreen = ({ navigation }: any) => {
@@ -20,14 +21,37 @@ const UserAccountScreen = ({ navigation }: any) => {
 
       <View style={styles.profileContainer}>
         <Image
-          source={require('../../assets/image/avatar.png')}
+          source={require('../../assets/image/Godswill.jpg')}
           style={styles.avatarImage}
         />
-        <Text style={styles.avatarText}>John Doe</Text>
+        <Text style={styles.avatarText}>Godswill Uchechi</Text>
       </View>
 
       <View style={styles.profileContainer}>
-
+        <SettingComponent
+          icon="user"
+          heading="Account"
+          subheading="Edit Profile"
+          subtitle="Change Password"
+        />
+        <SettingComponent
+          icon="settings"
+          heading="Settings"
+          subheading="Theme"
+          subtitle="Permissions"
+        />
+        <SettingComponent
+          icon="dollar-sign"
+          heading="Offers & Refferrals"
+          subheading="Offer"
+          subtitle="Refferrals"
+        />
+        <SettingComponent
+          icon="info"
+          heading="About"
+          subheading="About Movies"
+          subtitle="more"
+        />
       </View>
     </View>
   );
@@ -55,8 +79,9 @@ const styles = StyleSheet.create({
     borderRadius: 80,
   },
   avatarText: {
-    fontSize: FONTSIZE.size_16,
+    fontSize: FONTSIZE.size_18,
     marginTop: SPACING.space_16,
     color: COLORS.White,
+    fontWeight: "bold",
   },
 });
