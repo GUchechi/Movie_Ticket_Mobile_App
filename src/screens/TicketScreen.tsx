@@ -30,6 +30,7 @@ const TicketScreen = ({ route, navigation }: any) => {
     setTicketData(route.params);
   }
 
+  // If there is an undefined or a null value
   if (ticketData == undefined || ticketData == null) {
     return (
       <View style={styles.container}>
@@ -63,31 +64,11 @@ const TicketScreen = ({ route, navigation }: any) => {
             <LinearGradient
               colors={[COLORS.OrangeRGBA0, COLORS.Grey]}
               style={styles.linearGradient}>
-              <View
-                style={[
-                  styles.blackCircle,
-                  { position: 'absolute', bottom: -40, left: -40 },
-                ]}></View>
-              <View
-                style={[
-                  styles.blackCircle,
-                  { position: 'absolute', bottom: -40, right: -40 },
-                ]}></View>
             </LinearGradient>
           </ImageBackground>
           <View style={styles.linear}></View>
 
           <View style={styles.ticketFooter}>
-            <View
-              style={[
-                styles.blackCircle,
-                { position: 'absolute', top: -40, left: -40 },
-              ]}></View>
-            <View
-              style={[
-                styles.blackCircle,
-                { position: 'absolute', top: -40, right: -40 },
-              ]}></View>
             <View style={styles.ticketDateContainer}>
               <View style={styles.subtitleContainer}>
                 <Text style={styles.dateTitle}>{ticketData?.date.date}</Text>
@@ -143,6 +124,7 @@ const styles = StyleSheet.create({
   appHeaderContainer: {
     marginHorizontal: SPACING.space_36,
     marginTop: SPACING.space_20 * 2,
+    marginBottom: SPACING.space_20,
   },
   ticketContainer: {
     flex: 1,
@@ -158,7 +140,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   linearGradient: {
-    height: '70%',
+    height: '30%',
   },
   linear: {
     borderTopColor: COLORS.Black,
@@ -210,7 +192,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   clockIcon: {
-    fontSize: FONTSIZE.size_24,
+    fontSize: FONTSIZE.size_18,
     color: COLORS.White,
     paddingBottom: SPACING.space_10,
   },
