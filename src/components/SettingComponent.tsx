@@ -3,8 +3,9 @@ import { View, Text, StyleSheet } from 'react-native'
 import { COLORS, FONTSIZE, SPACING } from '../theme/Theme';
 import { Feather } from '@expo/vector-icons';
 
+type FeatherIconName = "user" | "settings" | "dollar-sign" | "info"
 interface SettingComponentProps {
-    icon: string,
+    icon: FeatherIconName,
     heading: string,
     subheading: string,
     subtitle: string,
