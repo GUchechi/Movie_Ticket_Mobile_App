@@ -205,18 +205,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: 'center',
     },
-    GodswillStream: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: 'center',
-        gap: 5,
-    },
-    GodswillStreamBG: {
-        backgroundColor: COLORS.Primary,
-        padding: 11,
-        borderTopRightRadius: 50,
-        borderBottomRightRadius: 50,
-    },
     searchIcon: {
         alignItems: 'center',
         justifyContent: 'center',
