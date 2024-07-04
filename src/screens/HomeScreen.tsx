@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import {
-    Text,
     View,
     StyleSheet,
     Dimensions,
-    TouchableOpacity,
     ActivityIndicator,
     ScrollView,
     StatusBar,
     FlatList,
 } from 'react-native';
-import { COLORS, FONTSIZE, SPACING } from '../theme/Theme'
+import { COLORS, SPACING } from '../theme/Theme'
 import InputHeader from '../components/InputHeader';
 import { getNowPlayingMoviesList, getUpcomingMoviesList, getPopularMoviesList } from '../components/MoviesFunction';
 import CategoryHeader from '../components/CategoryHeader';
 import SubMovieCard from '../components/SubMovieCard';
 import { baseImagePath } from '../api/ApiCalls';
 import MovieCard from '../components/MovieCard';
-import { Feather } from '@expo/vector-icons';
 import GodswillStream from '../components/GodswillStream';
 
 const { width, height } = Dimensions.get('window');
@@ -77,9 +74,6 @@ const HomeScreen = ({ navigation }: any) => {
             </ScrollView>
         )
     }
-
-
-
 
 
     return (
